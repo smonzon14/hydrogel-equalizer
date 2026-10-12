@@ -176,7 +176,14 @@ def apply_eq_with_curve(
     audio_eq = match_rms(audio_eq, rms_original)
     # clip to [-1, 1] if original audio is in that range
     if np.max(np.abs(audio)) <= 1.0:
-        audio_eq = np.clip(audio_eq, -1.0, 1.0)
+        # clipping lowers the RMS slightly, so re-match and re-clip until both hold
+        for _ in range(50):
+            audio_eq = np.clip(audio_eq, -1.0, 1.0)
+            if np.isclose(np.sqrt(np.mean(audio_eq**2)), rms_original, atol=1e-6):
+                break
+            audio_eq = match_rms(audio_eq, rms_original)
+        else:
+            audio_eq = np.clip(audio_eq, -1.0, 1.0)
     rms_eq = np.sqrt(np.mean(audio_eq.astype(np.float64)**2))
     
     # convert back to frequencies for comparison to original

@@ -60,7 +60,16 @@ All scripts are run from the repository root, e.g. `python hydrogel_eq.py` or
    - `hydrogel_eq_generate_all.py` — batch-applies the EQ at several gains and
      writes EQ'd WAVs + predicted scores to `hydrogel_eq_generated_songs/<gain>dB/`.
 
-6. **Genre analysis** — `hydrogel_eq_compare_genres.py`
+6. **Control EQs** (is the effect specific to the discovered bands?)
+   - `hydrogel_eq_generate_controls.py` — writes inverted-EQ and random-EQ (band gains
+     shuffled across bands) WAVs for the top-10 songs to
+     `hydrogel_eq_generated_songs/controls_15dB/`, plus the curves and MLP-predicted
+     scores (`control_eq_curves.*`, `control_eq_scores.csv`).
+   - `hydrogel_eq_random_null.py` — predicted score of 100 random EQs vs. the optimal and
+     inverted EQ for every model (`random_null_distribution.*`,
+     `control_eqs_with_scores.png`).
+
+7. **Genre analysis** — `hydrogel_eq_compare_genres.py`
    Compares each genre's average PSD shape against the score-correlation curve
    (similarity ranking, good/bad frequency breakdown). Outputs in
    `genre_similarity_to_correlations/`.

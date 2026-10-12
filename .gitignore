@@ -12,3 +12,8 @@ __pycache__/
 *.pyc
 
 .venv/
+
+# Private notes for the paper revision
+REVIEWER_NOTES.md
+
+.DS_Store
