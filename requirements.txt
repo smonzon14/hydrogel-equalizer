@@ -8,3 +8,4 @@ soundfile
 scikit-learn
 torch
 tqdm
+kagglehub

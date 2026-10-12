@@ -1,6 +1,7 @@
-# GTZAN audio dataset (~1.3 GB) — too large for GitHub.
-# Download it (e.g. from https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification)
-# and place the genre folders under GTZAN/genres_original/
+# GTZAN audio dataset (~1.3 GB) — copyrighted audio, must NOT be committed or redistributed.
+# Fetch it locally with `python GTZAN/download_dataset.py`
+# (https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification),
+# which places the genre folders under GTZAN/genres_original/
 GTZAN/genres_original/
 
 # Generated audio outputs (EQ'd WAVs can be regenerated with hydrogel_eq_generate_all.py)
@@ -9,3 +10,5 @@ hydrogel_eq_generated_songs/*dB/
 
 __pycache__/
 *.pyc
+
+.venv/

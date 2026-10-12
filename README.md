@@ -8,13 +8,17 @@ scores, applies that EQ to songs, and evaluates whether machine-learning models
 ## Setup
 
 ```bash
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+python GTZAN/download_dataset.py
 ```
 
-The GTZAN audio dataset (~1.3 GB) is not committed to the repo. Download it
-(e.g. from [Kaggle](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification))
-and place the genre folders under `GTZAN/genres_original/` (e.g.
-`GTZAN/genres_original/blues/blues.00000.wav`, ...).
+The GTZAN audio dataset (~1.3 GB) is not committed to the repo.
+`GTZAN/download_dataset.py` fetches it from
+[Kaggle](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification)
+(public, no account needed) and places the genre folders under
+`GTZAN/genres_original/` (e.g. `GTZAN/genres_original/blues/blues.00000.wav`, ...).
+It is a no-op if the audio is already there; pass `--force` to re-download.
 
 All scripts are run from the repository root, e.g. `python hydrogel_eq.py` or
 `python GTZAN/spearman_matrix.py`.
